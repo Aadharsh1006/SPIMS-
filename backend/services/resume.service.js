@@ -8,7 +8,8 @@ const mongoose = require('mongoose');
 
 const parseWithSpacy = async (text) => {
     try {
-        const res = await axios.post((process.env.SPACY_SERVICE_URL || 'http://127.0.0.1:8000') + '/parse', { text });
+        const aiUrl = process.env.AI_SERVER_URL || 'http://127.0.0.1:8000';
+        const res = await axios.post(`${aiUrl}/api/ai/parse`, { text });
         return res.data;
     } catch (err) {
         console.error('spaCy service error:', err.message);

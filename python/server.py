@@ -407,7 +407,7 @@ def parse_with_groq(text):
         print(f"Gemini Error: {e}")
         return None
 
-@app.route('/parse', methods=['POST'])
+@app.route('/api/ai/parse', methods=['POST'])
 def parse_resume():
     try:
         data = request.get_json() or {}
@@ -1029,5 +1029,6 @@ def chatbot_query():
 
 
 if __name__ == '__main__':
-    print(f"Starting High-Precision AI Server (v2.5) on port 8000...")
-    app.run(port=8000, host='0.0.0.0', debug=False)
+    port = int(os.environ.get('PORT', 8000))
+    print(f"Starting High-Precision AI Server (v2.5) on port {port}...")
+    app.run(port=port, host='0.0.0.0', debug=False)
