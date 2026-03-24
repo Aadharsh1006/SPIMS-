@@ -45,29 +45,6 @@ const getMe = async (req, res, next) => {
     }
 };
 
-const googleAuthCallback = async (req, res) => {
-    try {
-        if (!req.user) {
-            return res.redirect(`${process.env.CLIENT_URL || 'http://localhost:5173'}/login?error=auth_failed`);
-        }
-
-        const token = authService.signUserToken(req.user);
-
-        // Return a script to send message to opener window (SPA) and close this window
-        // Or redirect with token if simple. Usually OAuth happens in a popup or redirect.
-        // Prompt says: "Return a small HTML/JS snippet that sends token back... or redirect with token as URL fragment."
-
-        res.send(`
-            <script>
-                window.opener.postMessage({ type: 'AUTH_SUCCESS', token: '${token}' }, '${process.env.CLIENT_URL || 'http://localhost:5173'}');
-                window.close();
-            </script>
-        `);
-    } catch (err) {
-        res.redirect(`${process.env.CLIENT_URL || 'http://localhost:5173'}/login?error=server_error`);
-    }
-};
-
 const changePassword = async (req, res, next) => {
     try {
         const { newPassword } = req.body;
@@ -142,5 +119,5 @@ const resetPassword = async (req, res, next) => {
     }
 };
 
-module.exports = { devLogin, getMe, googleAuthCallback, changePassword, forgotPassword, verifyOTP, resetPassword };
+module.exports = { devLogin, getMe, changePassword, forgotPassword, verifyOTP, resetPassword };
 
