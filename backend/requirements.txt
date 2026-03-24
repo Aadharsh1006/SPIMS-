@@ -1,5 +1,0 @@
-spacy
-pdfminer.six
-sentence-transformers
-pymongo
-python-dotenv
