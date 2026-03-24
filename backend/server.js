@@ -34,6 +34,10 @@ const allowedOrigins = [
     'http://127.0.0.1:5174'
 ].filter(Boolean);
 
+console.log('--- BACKEND CORS DIAGNOSTIC ---');
+console.log('Allowed Origins:', allowedOrigins);
+console.log('-------------------------------');
+
 app.use(cors({
     origin: function (origin, callback) {
         // Allow requests with no origin (like mobile apps or curl)
