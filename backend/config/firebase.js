@@ -2,9 +2,16 @@ const admin = require('firebase-admin');
 const fs = require('fs');
 const path = require('path');
 
-let serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT
-    ? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT)
-    : null;
+let serviceAccount = null;
+
+const envJson = process.env.FIREBASE_JSON || process.env.FIREBASE_SERVICE_ACCOUNT;
+if (envJson) {
+    try {
+        serviceAccount = JSON.parse(envJson);
+    } catch (e) {
+        console.error('Failed to parse FIREBASE_JSON environment variable:', e.message);
+    }
+}
 
 if (!serviceAccount) {
     const filePath = path.join(__dirname, 'firebase-service-account.json');
