@@ -1,8 +1,12 @@
 // frontend/src/api/api.js
 import axios from 'axios';
 
+const rawBaseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+// Strip any trailing slash if it exists
+const sanitizedBaseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl.slice(0, -1) : rawBaseUrl;
+
 const api = axios.create({
-    baseURL: (import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api'
+    baseURL: sanitizedBaseUrl + '/api'
 });
 
 console.log('--- API CONNECTION DIAGNOSTIC ---');
@@ -150,8 +154,11 @@ export const publicApi = {
     downloadResume: (studentId) => api.get(`/public/portfolio/${studentId}/resume/download`, { responseType: 'blob' })
 };
 
+const rawAiUrl = import.meta.env.VITE_AI_URL || 'http://localhost:8000';
+const sanitizedAiUrl = rawAiUrl.endsWith('/') ? rawAiUrl.slice(0, -1) : rawAiUrl;
+
 const aiApiBase = axios.create({
-    baseURL: (import.meta.env.VITE_AI_URL || 'http://localhost:8000') + '/api/ai'
+    baseURL: sanitizedAiUrl + '/api/ai'
 });
 
 export const aiApi = {
