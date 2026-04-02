@@ -818,7 +818,7 @@ const StudentProfilePage = () => {
                             </button>
                         </div>
                         <div className="flex-1 overflow-y-auto bg-[var(--bg-main)]/80 rounded-xl border border-[var(--border-main)] p-4 custom-scrollbar">
-                            <pre className="text-xs font-mono text-emerald-500 whitespace-pre-wrap leading-relaxed italic">{aiRawText}</pre>
+                            <pre className="text-xs font-mono text-[var(--text-main)] whitespace-pre-wrap leading-relaxed italic">{aiRawText}</pre>
                         </div>
                         <button onClick={() => setShowAtsView(false)} className="mt-5 px-6 py-4 bg-[var(--accent)] text-white font-black text-[10px] uppercase tracking-[0.3em] rounded-xl hover:bg-[var(--accent)]/90 transition-all active:scale-95 shadow-[var(--shadow-md)]">
                             Close Terminal

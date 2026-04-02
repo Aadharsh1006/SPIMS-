@@ -190,18 +190,18 @@ const StudentJobs = () => {
             <div className="relative z-10 space-y-8 pb-20 max-w-[1600px] mx-auto">
 
                 {/* Header & Search */}
-                <div className="bg-slate-900/80 backdrop-blur-md p-8 md:p-10 rounded-[2.5rem] border border-slate-800 space-y-8 relative overflow-hidden group">
+                <div className="bg-[var(--bg-card)]/80 backdrop-blur-md p-8 md:p-10 rounded-[2.5rem] border border-[var(--border-main)] space-y-8 relative overflow-hidden group">
                     <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-1000">
                         <Sparkles size={200} />
                     </div>
 
                     <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
                         <div className="space-y-2">
-                            <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter italic flex items-center gap-4">
+                            <h1 className="text-4xl md:text-5xl font-black text-[var(--text-bright)] tracking-tighter italic flex items-center gap-4">
                                 <Sparkles className="text-indigo-500 animate-pulse" size={40} /> Find Jobs
                             </h1>
-                            <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] flex items-center gap-3">
-                                <span className="w-8 h-px bg-slate-700" /> Smart Job Matching <span className="w-8 h-px bg-slate-700" />
+                            <p className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.4em] flex items-center gap-3">
+                                <span className="w-8 h-px bg-[var(--border-main)]" /> Smart Job Matching <span className="w-8 h-px bg-[var(--border-main)]" />
                             </p>
                         </div>
                         <span className="px-5 py-2.5 bg-[var(--bg-main)] text-[var(--text-bright)] rounded-xl text-[10px] font-black uppercase tracking-[0.2em] border border-[var(--border-main)] self-start lg:self-auto shadow-[var(--shadow-sm)]">
@@ -404,14 +404,14 @@ const StudentJobs = () => {
                                                     if (para.trim().match(/^[-•*]/)) {
                                                         return (
                                                             <div key={idx} className="flex items-start gap-3 pl-2">
-                                                                <div className="w-1.5 h-1.5 mt-2 rounded-full bg-indigo-400 shrink-0" />
-                                                                <p className="text-slate-300 font-medium">{para.replace(/^[-•*]\s*/, '').trim()}</p>
+                                                                <div className="w-1.5 h-1.5 mt-2 rounded-full bg-[var(--accent)] shrink-0" />
+                                                                <p className="text-[var(--text-main)] font-medium">{para.replace(/^[-•*]\s*/, '').trim()}</p>
                                                             </div>
                                                         );
                                                     }
-                                                    return <p key={idx} className={idx === 0 ? "text-lg italic font-black text-slate-200" : "text-sm font-medium text-slate-400"}>{para.trim()}</p>;
+                                                    return <p key={idx} className={idx === 0 ? "text-lg italic font-black text-[var(--text-bright)]" : "text-sm font-medium text-[var(--text-muted)]"}>{para.trim()}</p>;
                                                 }) : (
-                                                    <p className="italic text-slate-500 text-sm">"More details about this job will be available soon..."</p>
+                                                    <p className="italic text-[var(--text-muted)] opacity-50 text-sm">"More details about this job will be available soon..."</p>
                                                 )}
                                             </div>
                                         </section>
@@ -419,7 +419,7 @@ const StudentJobs = () => {
                                         <section>
                                             <div className="flex items-center gap-3 mb-6">
                                                 <div className="h-8 w-1 bg-indigo-500 rounded-full" />
-                                                <h3 className="text-xs font-black text-slate-400 uppercase tracking-[0.4em]">Why you're a good fit</h3>
+                                                <h3 className="text-xs font-black text-[var(--text-muted)] uppercase tracking-[0.4em]">Why you're a good fit</h3>
                                             </div>
 
                                             <JobFitAnalysis job={selectedJob} userProfile={userProfile} onAnalysisComplete={setActiveAnalysis} />
@@ -464,7 +464,7 @@ const StudentJobs = () => {
                                             <h3 className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.4em]">Requirements</h3>
                                             <div className="space-y-4">
                                                 {!selectedJob.requirements?.minCgpa && !selectedJob.requirements?.batchYear && (!selectedJob.requirements?.branchesAllowed?.length) && (
-                                                    <p className="text-[10px] font-black text-slate-600 uppercase tracking-[0.3em] bg-slate-800 rounded-xl border border-dashed border-slate-700 p-5 text-center italic">No thresholds active</p>
+                                                    <p className="text-[10px] font-black text-[var(--text-muted)] opacity-60 uppercase tracking-[0.3em] bg-[var(--bg-secondary)] rounded-xl border border-dashed border-[var(--border-main)] p-5 text-center italic">No thresholds active</p>
                                                 )}
                                                 {selectedJob.requirements?.minCgpa && (
                                                     <div className="flex items-center justify-between p-5 bg-[var(--bg-main)] rounded-[1.5rem] border border-[var(--border-main)]">

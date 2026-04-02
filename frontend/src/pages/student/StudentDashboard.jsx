@@ -153,7 +153,7 @@ const GrowthBlueprint = ({ profile }) => {
                                         "text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full border",
                                         phase.impact === 'High' ? "text-emerald-400 bg-emerald-500/10 border-emerald-500/20" :
                                         phase.impact === 'Medium' ? "text-amber-400 bg-amber-500/10 border-amber-500/20" :
-                                        "text-slate-400 bg-slate-800 border-white/10"
+                                        "text-[var(--text-muted)] bg-[var(--bg-secondary)] border-[var(--border-main)]"
                                     )}>
                                         {phase.impact || 'Medium'} Impact
                                     </span>
@@ -179,7 +179,7 @@ const GrowthBlueprint = ({ profile }) => {
                     </div>
                 ) : (
                     <div className="py-10 text-center">
-                        <p className="text-slate-400 italic">No blueprint available.</p>
+                        <p className="text-[var(--text-muted)] italic">No blueprint available.</p>
                     </div>
                 )}
             </div>
@@ -201,8 +201,8 @@ const MarketIntelligence = () => {
 
     if (loading) return (
         <div className="animate-pulse flex gap-6 h-64 p-8">
-            <div className="flex-1 bg-slate-800 rounded-3xl" />
-            <div className="flex-1 bg-slate-800 rounded-3xl" />
+            <div className="flex-1 bg-[var(--bg-secondary)] rounded-3xl" />
+            <div className="flex-1 bg-[var(--bg-secondary)] rounded-3xl" />
         </div>
     );
     if (!data) return null;
@@ -316,7 +316,7 @@ const MarketIntelligence = () => {
                 <div className="absolute top-0 right-0 p-8 opacity-5 pointer-events-none text-white">
                     <Zap size={200} className="translate-x-12 -translate-y-12" />
                 </div>
-                <h3 className="text-[10px] font-black text-indigo-300 uppercase tracking-widest mb-8 flex items-center gap-3">
+                <h3 className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest mb-8 flex items-center gap-3">
                     <BookOpen size={14} />
                     <span className="italic">Recommended Courses</span>
                 </h3>
@@ -339,7 +339,7 @@ const MarketIntelligence = () => {
                                 <p className="text-[10px] font-black text-[var(--accent)] uppercase mb-0.5">{rec.skill}</p>
                                 <p className="text-xs text-[var(--text-main)]/80 font-medium leading-tight truncate">{rec.action}</p>
                             </div>
-                            <ArrowRight size={14} className="text-white/20 group-hover:text-white shrink-0 transition-all group-hover:translate-x-1" />
+                            <ArrowRight size={14} className="text-[var(--text-muted)] opacity-30 group-hover:opacity-100 group-hover:text-[var(--text-bright)] shrink-0 transition-all group-hover:translate-x-1" />
                         </a>
                     ))}
                     {missingSkills.length > 4 && (
@@ -350,7 +350,7 @@ const MarketIntelligence = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     key={s}
-                                    className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold text-slate-400 uppercase tracking-tighter hover:bg-white/10 hover:text-indigo-400 transition-all"
+                                    className="px-3 py-1 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-full text-[9px] font-bold text-[var(--text-muted)] uppercase tracking-tighter hover:bg-[var(--bg-secondary)] hover:text-indigo-400 transition-all"
                                 >
                                     +{s}
                                 </a>
@@ -421,7 +421,7 @@ const StudentDashboard = () => {
         </div>
     );
 
-    if (!data) return <div className="text-white p-10">Failed to load dashboard data.</div>;
+    if (!data) return <div className="text-[var(--text-bright)] p-10">Failed to load dashboard data.</div>;
 
     const stats = [
         { label: 'Career Explorations', icon: Search, value: data.totalApplications, color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20' },
@@ -445,26 +445,27 @@ const StudentDashboard = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
             >
-                <div className="bg-indigo-950 rounded-3xl p-8 md:p-10 text-white relative overflow-hidden shadow-2xl border border-indigo-800/40">
-                    <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
+                <div className="bg-[var(--bg-card)] rounded-3xl p-8 md:p-10 relative overflow-hidden shadow-[var(--shadow-lg)] border border-[var(--border-main)]">
+                    <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-transparent pointer-events-none rounded-3xl" />
+                    <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none text-[var(--text-muted)]">
                         <LayoutDashboard size={220} />
                     </div>
                     <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
                         <div className="space-y-6 flex-1">
                             {/* Badges */}
                             <div className="flex flex-wrap items-center gap-3">
-                                <span className="px-3 py-1 bg-indigo-500/20 border border-indigo-400/20 rounded-full text-[10px] font-black uppercase tracking-widest text-indigo-200">
+                                <span className="px-3 py-1 bg-indigo-500/15 border border-indigo-500/20 rounded-full text-[10px] font-black uppercase tracking-widest text-indigo-500">
                                     Student Dashboard
                                 </span>
                                 {getDisplayStrength() < 50 ? (
-                                    <div className="flex items-center gap-2 px-3 py-1 bg-amber-500/20 border border-amber-400/20 rounded-full">
+                                    <div className="flex items-center gap-2 px-3 py-1 bg-amber-500/15 border border-amber-400/20 rounded-full">
                                         <div className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                                        <span className="text-[9px] font-black text-amber-200 uppercase tracking-widest">Updating insights...</span>
+                                        <span className="text-[9px] font-black text-amber-600 dark:text-amber-400 uppercase tracking-widest">Updating insights...</span>
                                     </div>
                                 ) : (
-                                    <div className="flex items-center gap-2 px-3 py-1 bg-indigo-500/10 border border-indigo-400/10 rounded-full">
+                                    <div className="flex items-center gap-2 px-3 py-1 bg-indigo-500/10 border border-indigo-400/20 rounded-full">
                                         <div className="w-2 h-2 rounded-full bg-indigo-400 animate-ping" />
-                                        <span className="text-xs font-bold text-indigo-300">Live Updates Active</span>
+                                        <span className="text-xs font-bold text-indigo-500">Live Updates Active</span>
                                     </div>
                                 )}
                             </div>
@@ -472,12 +473,12 @@ const StudentDashboard = () => {
                             {/* Career Paths */}
                             {data.profile?.careerPaths && data.profile.careerPaths.length > 0 && (
                                 <div className="flex flex-wrap gap-2">
-                                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center pr-2">
-                                        <Target size={12} className="mr-1.5 text-indigo-400" /> Career Tracks:
+                                    <span className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest flex items-center pr-2">
+                                        <Target size={12} className="mr-1.5 text-indigo-500" /> Career Tracks:
                                     </span>
                                     {data.profile.careerPaths.map((path, idx) => (
-                                        <div key={idx} className="bg-white/10 border border-white/10 px-3 py-1.5 rounded-xl text-[10px] font-bold text-white flex items-center gap-2">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> {path}
+                                        <div key={idx} className="bg-[var(--bg-secondary)] border border-[var(--border-main)] px-3 py-1.5 rounded-xl text-[10px] font-bold text-[var(--text-main)] flex items-center gap-2">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> {path}
                                         </div>
                                     ))}
                                 </div>
@@ -485,10 +486,10 @@ const StudentDashboard = () => {
 
                             {/* Welcome + Status */}
                             <div className="space-y-2">
-                                <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight">
-                                    Welcome Back, <span className="text-indigo-300">{data.name?.split(' ')[0]}</span>
+                                <h1 className="text-3xl md:text-4xl font-black text-[var(--text-bright)] tracking-tight">
+                                    Welcome Back, <span className="text-[var(--accent)]">{data.name?.split(' ')[0]}</span>
                                 </h1>
-                                <p className="text-indigo-200/60 text-base font-medium flex flex-wrap items-center gap-2">
+                                <p className="text-[var(--text-muted)] text-base font-medium flex flex-wrap items-center gap-2">
                                     Placement Status:
                                     <span className={clsx(
                                         "font-black uppercase px-3 py-1 rounded-xl text-sm tracking-tight transition-all",
@@ -496,7 +497,7 @@ const StudentDashboard = () => {
                                         data.placementStatus?.startsWith('OFFERED') ? "bg-blue-500 text-white" :
                                         data.placementStatus?.startsWith('SHORTLISTED') ? "bg-amber-500 text-white" :
                                         data.placementStatus?.startsWith('INTERVIEWING') ? "bg-purple-500 text-white" :
-                                        "bg-white/10 text-white"
+                                        "bg-[var(--bg-secondary)] text-[var(--text-main)] border border-[var(--border-main)]"
                                     )}>
                                         {data.placementStatus?.replace(/_/g, ' ')}
                                     </span>
@@ -506,21 +507,21 @@ const StudentDashboard = () => {
 
                         {/* Profile Strength Card */}
                         <div className="shrink-0">
-                            <div className="p-6 bg-white/5 backdrop-blur-2xl rounded-2xl border border-white/10 shadow-2xl min-w-[200px]">
-                                <p className="text-[10px] font-black uppercase tracking-widest text-indigo-300 mb-2">Profile Strength</p>
+                            <div className="p-6 bg-[var(--bg-secondary)] backdrop-blur-2xl rounded-2xl border border-[var(--border-main)] shadow-[var(--shadow-md)] min-w-[200px]">
+                                <p className="text-[10px] font-black uppercase tracking-widest text-[var(--accent)] mb-2">Profile Strength</p>
                                 <div className="flex items-baseline gap-2">
-                                    <span className="text-5xl font-black text-white tracking-tighter">{getDisplayStrength()}%</span>
-                                    <span className="text-xs font-bold text-indigo-400 uppercase">Score</span>
+                                    <span className="text-5xl font-black text-[var(--text-bright)] tracking-tighter">{getDisplayStrength()}%</span>
+                                    <span className="text-xs font-bold text-[var(--accent)] uppercase">Score</span>
                                 </div>
-                                <div className="mt-4 w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                <div className="mt-4 w-full h-1.5 bg-[var(--bg-main)] rounded-full overflow-hidden">
                                     <div
-                                        className="h-full bg-gradient-to-r from-indigo-500 to-indigo-300 transition-all duration-1000"
+                                        className="h-full bg-gradient-to-r from-[var(--accent)] to-indigo-400 transition-all duration-1000"
                                         style={{ width: `${getDisplayStrength()}%` }}
                                     />
                                 </div>
                                 <button
                                     onClick={handleShare}
-                                    className="mt-5 w-full py-2.5 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-widest transition-all"
+                                    className="mt-5 w-full py-2.5 bg-[var(--bg-main)] hover:bg-[var(--border-main)] border border-[var(--border-main)] rounded-xl flex items-center justify-center gap-2 text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest transition-all"
                                 >
                                     <Share2 size={13} />
                                     Share Portfolio
@@ -628,7 +629,7 @@ const StudentDashboard = () => {
                                                     <div className="text-[10px] font-black text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-xl uppercase tracking-widest">
                                                         {job.matchPercentage}% Match
                                                     </div>
-                                                    <ChevronRight size={18} className="text-slate-600 group-hover/card:text-indigo-400 group-hover/card:translate-x-1 transition-all" />
+                                                    <ChevronRight size={18} className="text-[var(--text-muted)] opacity-50 group-hover/card:opacity-100 group-hover/card:text-indigo-400 group-hover/card:translate-x-1 transition-all" />
                                                 </div>
                                             </div>
                                             <p className="text-sm text-[var(--text-muted)] font-bold mb-3 flex items-center gap-2">
@@ -704,7 +705,7 @@ const StudentDashboard = () => {
                         [&::-webkit-scrollbar-thumb]:rounded-full">
 
                         {/* Timeline line */}
-                        <div className="absolute left-12 top-8 bottom-8 w-px bg-gradient-to-b from-transparent via-slate-700 to-transparent pointer-events-none hidden" />
+                        <div className="absolute left-12 top-8 bottom-8 w-px bg-gradient-to-b from-transparent via-[var(--border-main)] to-transparent pointer-events-none hidden" />
 
                         {data.timeline && data.timeline.length > 0 ? (
                             <div className="space-y-6">
@@ -717,7 +718,7 @@ const StudentDashboard = () => {
                                         'Offer Accepted - Hired!': { icon: Rocket, color: 'text-emerald-500', bg: 'bg-emerald-500/20', border: 'border-emerald-500/30' },
                                         'Changes requested by Faculty': { icon: Clock, color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20' }
                                     };
-                                    const config = statusConfigs[event.event] || { icon: Target, color: 'text-slate-500', bg: 'bg-slate-800', border: 'border-slate-700' };
+                                    const config = statusConfigs[event.event] || { icon: Target, color: 'text-[var(--text-muted)]', bg: 'bg-[var(--bg-secondary)]', border: 'border-[var(--border-main)]' };
                                     const Icon = config.icon;
 
                                     return (
@@ -752,10 +753,10 @@ const StudentDashboard = () => {
                             </div>
                         ) : (
                             <div className="py-16 text-center space-y-4">
-                                <div className="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center mx-auto border border-slate-700">
-                                    <Clock size={24} className="text-slate-600" />
+                                <div className="w-14 h-14 bg-[var(--bg-secondary)] rounded-2xl flex items-center justify-center mx-auto border border-[var(--border-main)]">
+                                    <Clock size={24} className="text-[var(--text-muted)] opacity-50" />
                                 </div>
-                                <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest">No recent activity found.</p>
+                                <p className="text-[10px] font-black text-[var(--text-muted)] opacity-50 uppercase tracking-widest">No recent activity found.</p>
                             </div>
                         )}
                     </div>

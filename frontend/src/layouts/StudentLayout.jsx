@@ -58,7 +58,7 @@ const StudentLayout = () => {
                     >
                         <Icon
                             size={20}
-                            className={isActive(to) ? 'text-white' : 'text-slate-400 group-hover:text-indigo-400'}
+                            className={isActive(to) ? 'text-white' : 'text-[var(--text-muted)] group-hover:text-indigo-400'}
                         />
                         {label}
                     </Link>
@@ -94,7 +94,7 @@ const StudentLayout = () => {
             </aside>
 
             {/* Sidebar — Mobile Drawer */}
-            <aside className={`fixed top-0 left-0 h-full w-64 bg-slate-900 border-r border-slate-800 flex flex-col z-30 transform transition-transform duration-300 md:hidden
+            <aside className={`fixed top-0 left-0 h-full w-64 bg-[var(--bg-card)] border-r border-[var(--border-main)] flex flex-col z-30 transform transition-transform duration-300 md:hidden
                 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 <SidebarContent />
             </aside>
@@ -107,12 +107,12 @@ const StudentLayout = () => {
                     <div className="flex items-center gap-3">
                         {/* Mobile hamburger */}
                         <button
-                            className="md:hidden text-slate-400 hover:text-white transition-colors"
+                            className="md:hidden text-[var(--text-muted)] hover:text-[var(--text-bright)] transition-colors"
                             onClick={() => setSidebarOpen(true)}
                         >
                             <Menu size={22} />
                         </button>
-                        <h2 className="text-xs md:text-sm font-black text-slate-400 uppercase tracking-widest">
+                        <h2 className="text-xs md:text-sm font-black text-[var(--text-muted)] uppercase tracking-widest">
                             Student Intelligence Portal
                         </h2>
                     </div>

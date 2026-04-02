@@ -202,45 +202,45 @@ const InterviewPrep = () => {
     if (interviewResult) {
         return (
             <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                <div className="bg-slate-900 rounded-[2.5rem] p-10 border border-slate-800 shadow-2xl relative overflow-hidden text-center">
+                <div className="bg-[var(--bg-card)] rounded-[2.5rem] p-10 border border-[var(--border-main)] shadow-[var(--shadow-lg)] relative overflow-hidden text-center">
                     <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none"><Award size={180} className="text-emerald-400" /></div>
-                    <h1 className="text-3xl font-black text-white uppercase tracking-tight italic mb-2">Your Result</h1>
-                    <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-10">Feedback & Analysis Complete</p>
+                    <h1 className="text-3xl font-black text-[var(--text-bright)] uppercase tracking-tight italic mb-2">Your Result</h1>
+                    <p className="text-[10px] font-black text-[var(--text-muted)] opacity-50 uppercase tracking-widest mb-10">Feedback & Analysis Complete</p>
 
                     <div className="flex justify-center mb-10">
-                        <div className="w-44 h-44 rounded-full border-8 border-slate-800 flex items-center justify-center relative flex-col">
+                        <div className="w-44 h-44 rounded-full border-8 border-[var(--border-main)] flex items-center justify-center relative flex-col">
                             <svg className="absolute inset-0 w-full h-full -rotate-90">
-                                <circle cx="88" cy="88" r="80" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-slate-800" />
+                                <circle cx="88" cy="88" r="80" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-[var(--border-main)]" />
                                 <circle cx="88" cy="88" r="80" stroke="currentColor" strokeWidth="8" fill="transparent"
                                     strokeDasharray={2 * Math.PI * 80}
                                     strokeDashoffset={2 * Math.PI * 80 * (1 - interviewResult.score / 100)}
                                     className="text-emerald-500 transition-all duration-1000 ease-out" />
                             </svg>
-                            <span className="text-5xl font-black text-white relative z-10 tabular-nums">{interviewResult.score}</span>
+                            <span className="text-5xl font-black text-[var(--text-bright)] relative z-10 tabular-nums">{interviewResult.score}</span>
                             <span className="text-[10px] font-black text-emerald-400 uppercase tracking-widest relative z-10 mt-1">Score</span>
                         </div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-6 text-left relative z-10 mb-8">
-                        <div className="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                        <div className="bg-[var(--bg-secondary)] p-6 rounded-2xl border border-[var(--border-main)]">
                             <div className="flex items-center gap-3 mb-4">
                                 <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center"><CheckCircle size={15} /></div>
-                                <h3 className="text-xs font-black text-white uppercase tracking-widest">What you did well</h3>
+                                <h3 className="text-xs font-black text-[var(--text-bright)] uppercase tracking-widest">What you did well</h3>
                             </div>
                             <ul className="space-y-3">
                                 {interviewResult.strengths.map((s, i) => (
-                                    <li key={i} className="text-sm text-slate-300 font-medium flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" /> {s}</li>
+                                    <li key={i} className="text-sm text-[var(--text-main)] font-medium flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" /> {s}</li>
                                 ))}
                             </ul>
                         </div>
-                        <div className="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                        <div className="bg-[var(--bg-secondary)] p-6 rounded-2xl border border-[var(--border-main)]">
                             <div className="flex items-center gap-3 mb-4">
                                 <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center"><AlertTriangle size={15} /></div>
-                                <h3 className="text-xs font-black text-white uppercase tracking-widest">What to work on</h3>
+                                <h3 className="text-xs font-black text-[var(--text-bright)] uppercase tracking-widest">What to work on</h3>
                             </div>
                             <ul className="space-y-3">
                                 {interviewResult.areasForImprovement.map((s, i) => (
-                                    <li key={i} className="text-sm text-slate-300 font-medium flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" /> {s}</li>
+                                    <li key={i} className="text-sm text-[var(--text-main)] font-medium flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" /> {s}</li>
                                 ))}
                             </ul>
                         </div>
@@ -248,10 +248,10 @@ const InterviewPrep = () => {
 
                     <div className="bg-indigo-500/10 p-6 rounded-2xl border border-indigo-500/20 text-left relative z-10 mb-8">
                         <h3 className="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-3">Coach's Advice</h3>
-                        <p className="text-sm text-slate-300 leading-relaxed italic">"{interviewResult.feedback}"</p>
+                        <p className="text-sm text-[var(--text-main)] leading-relaxed italic">"{interviewResult.feedback}"</p>
                     </div>
 
-                    <button onClick={() => { setInterviewResult(null); setMessages([]); }} className="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-black rounded-2xl text-[10px] uppercase tracking-widest transition-all border border-slate-700 active:scale-95">
+                    <button onClick={() => { setInterviewResult(null); setMessages([]); }} className="px-8 py-4 bg-[var(--bg-secondary)] hover:bg-[var(--border-main)] text-[var(--text-bright)] font-black rounded-2xl text-[10px] uppercase tracking-widest transition-all border border-[var(--border-main)] active:scale-95">
                         Practice Again
                     </button>
                 </div>
@@ -264,10 +264,10 @@ const InterviewPrep = () => {
             {/* Header */}
             <div className="flex items-center justify-between shrink-0">
                 <div>
-                    <h1 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight flex items-center gap-4">
+                    <h1 className="text-2xl md:text-3xl font-black text-[var(--text-bright)] uppercase tracking-tight flex items-center gap-4">
                         <Bot className="text-indigo-400" size={30} /> AI Interview Practice
                     </h1>
-                    <p className="text-slate-600 text-[10px] mt-1 uppercase font-black tracking-widest">Practice for your dream job</p>
+                    <p className="text-[var(--text-muted)] text-[10px] mt-1 uppercase font-black tracking-widest">Practice for your dream job</p>
                 </div>
                 {isInterviewActive && (
                     <button onClick={endInterview} className="flex items-center gap-2 px-6 py-3 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 font-black rounded-2xl transition-all text-xs uppercase tracking-widest active:scale-95">
@@ -279,31 +279,31 @@ const InterviewPrep = () => {
             {!isInterviewActive ? (
                 /* Setup Panel */
                 <div className="flex-1 overflow-y-auto [scrollbar-width:thin] [scrollbar-color:#334155_transparent]">
-                    <div className="bg-slate-900 rounded-[2.5rem] p-10 border border-slate-800 shadow-2xl relative overflow-hidden">
+                    <div className="bg-[var(--bg-card)] rounded-[2.5rem] p-10 border border-[var(--border-main)] shadow-[var(--shadow-lg)] relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-1.5 h-full bg-indigo-500 rounded-l-[2.5rem]" />
                         <div className="max-w-2xl">
-                            <h2 className="text-2xl font-black text-white tracking-tight mb-8 uppercase italic">Get Started</h2>
+                            <h2 className="text-2xl font-black text-[var(--text-bright)] tracking-tight mb-8 uppercase italic">Get Started</h2>
                             <div className="space-y-6">
                                 <div>
-                                    <label className="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2">Job Role Title</label>
+                                    <label className="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest mb-2">Job Role Title</label>
                                     <div className="relative">
-                                        <Briefcase className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-600" size={18} />
+                                        <Briefcase className="absolute left-5 top-1/2 -translate-y-1/2 text-[var(--text-muted)] opacity-50" size={18} />
                                         <input
                                             type="text"
                                             value={jobTitle}
                                             onChange={(e) => setJobTitle(e.target.value)}
                                             placeholder="e.g. Software Engineer"
-                                            className="w-full bg-slate-800 border border-slate-700 text-white p-4 pl-14 rounded-2xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all placeholder:text-slate-700"
+                                            className="w-full bg-[var(--bg-main)] border border-[var(--border-main)] text-[var(--text-main)] p-4 pl-14 rounded-2xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all placeholder:text-[var(--text-muted)] placeholder:opacity-40"
                                         />
                                     </div>
                                 </div>
                                 <div>
-                                    <label className="block text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2">Job Description</label>
+                                    <label className="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest mb-2">Job Description</label>
                                     <textarea
                                         value={jobDescription}
                                         onChange={(e) => setJobDescription(e.target.value)}
                                         placeholder="Paste the job description here. Our AI will use this to ask the right questions..."
-                                        className="w-full bg-slate-800 border border-slate-700 text-white p-5 rounded-2xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all placeholder:text-slate-700 h-40 resize-none [scrollbar-width:thin]"
+                                        className="w-full bg-[var(--bg-main)] border border-[var(--border-main)] text-[var(--text-main)] p-5 rounded-2xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all placeholder:text-[var(--text-muted)] placeholder:opacity-40 h-40 resize-none [scrollbar-width:thin]"
                                     />
                                 </div>
                                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
@@ -316,7 +316,7 @@ const InterviewPrep = () => {
                                             "flex items-center gap-2 px-6 py-3 border-2 font-black rounded-2xl text-[10px] uppercase tracking-widest transition-all",
                                             isSpotlightMode
                                                 ? "border-emerald-500 text-emerald-400 bg-emerald-500/10"
-                                                : "border-slate-700 text-slate-500 hover:border-slate-600 hover:text-slate-300"
+                                                : "border-[var(--border-main)] text-[var(--text-muted)] hover:border-[var(--accent)]/50 hover:text-[var(--accent)]"
                                         )}
                                     >
                                         {isSpotlightMode ? <Camera size={14} /> : <CameraOff size={14} />}
@@ -328,28 +328,28 @@ const InterviewPrep = () => {
 
                         {/* Tips Card */}
                         <div className="absolute right-10 top-1/2 -translate-y-1/2 w-60 hidden lg:block">
-                            <div className="p-6 bg-slate-800 rounded-2xl border border-slate-700 space-y-4">
+                            <div className="p-6 bg-[var(--bg-secondary)] rounded-2xl border border-[var(--border-main)] space-y-4">
                                 <div className="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center"><Zap size={20} /></div>
-                                <h4 className="text-sm font-black text-white uppercase">How it works</h4>
-                                <p className="text-xs text-slate-400 font-medium leading-relaxed">Our AI studies your profile and the job description. It will ask you tailored interview questions and give you a detailed performance report at the end.</p>
+                                <h4 className="text-sm font-black text-[var(--text-bright)] uppercase">How it works</h4>
+                                <p className="text-xs text-[var(--text-muted)] font-medium leading-relaxed">Our AI studies your profile and the job description. It will ask you tailored interview questions and give you a detailed performance report at the end.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             ) : (
                 /* Active Interview Chat */
-                <div className="flex-1 flex flex-col bg-slate-900 rounded-[2.5rem] border border-slate-800 shadow-2xl overflow-hidden">
+                <div className="flex-1 flex flex-col bg-[var(--bg-card)] rounded-[2.5rem] border border-[var(--border-main)] shadow-[var(--shadow-lg)] overflow-hidden">
                     {/* Chat Header */}
-                    <div className="bg-slate-950 p-5 border-b border-slate-800 flex items-center justify-between z-10">
+                    <div className="bg-[var(--bg-secondary)] p-5 border-b border-[var(--border-main)] flex items-center justify-between z-10">
                         <div className="flex items-center gap-4">
                             <div className="relative">
                                 <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
                                     <Bot size={22} className="text-white" />
                                 </div>
-                                <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-slate-950 rounded-full animate-pulse" />
+                                <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-[var(--bg-secondary)] rounded-full animate-pulse" />
                             </div>
                             <div>
-                                <h3 className="text-white font-black text-base tracking-tight uppercase italic">AI Interviewer</h3>
+                                <h3 className="text-[var(--text-bright)] font-black text-base tracking-tight uppercase italic">AI Interviewer</h3>
                                 <p className="text-[10px] text-indigo-400 font-black uppercase tracking-widest">Role: {jobTitle}</p>
                             </div>
                         </div>
@@ -373,14 +373,14 @@ const InterviewPrep = () => {
                         )}
 
                         {/* Messages */}
-                        <div className="flex-1 p-7 overflow-y-auto space-y-5 bg-slate-900 [scrollbar-width:thin] [scrollbar-color:#334155_transparent] relative z-10">
+                        <div className="flex-1 p-7 overflow-y-auto space-y-5 bg-[var(--bg-main)] [scrollbar-width:thin] [scrollbar-color:var(--border-main)_transparent] relative z-10">
                             {messages.map((m, idx) => (
                                 <div key={idx} className={clsx("flex", m.role === 'user' ? "justify-end" : "justify-start")}>
                                     <div className={clsx(
                                         "max-w-[75%] p-5 rounded-[1.75rem] text-sm shadow-xl",
                                         m.role === 'user'
                                             ? "bg-indigo-600 text-white rounded-tr-none shadow-indigo-500/20"
-                                            : "bg-slate-800 text-slate-200 border border-slate-700 rounded-tl-none"
+                                            : "bg-[var(--bg-card)] text-[var(--text-main)] border border-[var(--border-main)] rounded-tl-none"
                                     )}>
                                         <div className="leading-relaxed font-medium">{m.content}</div>
                                         <div className={clsx(
@@ -395,9 +395,9 @@ const InterviewPrep = () => {
                             ))}
                             {loading && (
                                 <div className="flex justify-start">
-                                    <div className="bg-slate-800 border border-slate-700 px-5 py-4 rounded-[1.75rem] rounded-tl-none flex items-center gap-3">
+                                    <div className="bg-[var(--bg-card)] border border-[var(--border-main)] px-5 py-4 rounded-[1.75rem] rounded-tl-none flex items-center gap-3">
                                         <Loader2 size={16} className="text-indigo-400 animate-spin" />
-                                        <span className="text-xs font-bold text-slate-500">AI is thinking...</span>
+                                        <span className="text-xs font-bold text-[var(--text-muted)]">AI is thinking...</span>
                                     </div>
                                 </div>
                             )}
@@ -405,19 +405,19 @@ const InterviewPrep = () => {
                         </div>
 
                         {/* Input Area */}
-                        <div className="p-5 bg-slate-950 border-t border-slate-800 relative z-10">
+                        <div className="p-5 bg-[var(--bg-secondary)] border-t border-[var(--border-main)] relative z-10">
                             <div className="flex items-end gap-3 max-w-5xl mx-auto">
                                 <textarea
                                     value={currentInput}
                                     onChange={(e) => setCurrentInput(e.target.value)}
                                     placeholder="Type your response here..."
-                                    className="flex-1 bg-slate-800 border border-slate-700 rounded-2xl px-5 py-4 text-sm text-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all placeholder:text-slate-600 resize-none min-h-[56px] max-h-[120px] [scrollbar-width:thin]"
+                                    className="flex-1 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-2xl px-5 py-4 text-sm text-[var(--text-main)] focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all placeholder:text-[var(--text-muted)] placeholder:opacity-40 resize-none min-h-[56px] max-h-[120px] [scrollbar-width:thin]"
                                     onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSendMessage(); } }}
                                 />
                                 <button
                                     onClick={handleSendMessage}
                                     disabled={loading || !currentInput.trim() || isRecording}
-                                    className="bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-800 disabled:text-slate-600 text-white h-14 px-7 rounded-2xl transition-all active:scale-95 flex items-center justify-center disabled:cursor-not-allowed"
+                                    className="bg-indigo-600 hover:bg-indigo-500 disabled:bg-[var(--bg-main)] disabled:text-[var(--text-muted)] text-white h-14 px-7 rounded-2xl transition-all active:scale-95 flex items-center justify-center disabled:cursor-not-allowed"
                                 >
                                     <MessageSquare size={20} />
                                 </button>
@@ -432,14 +432,14 @@ const InterviewPrep = () => {
                                     )}
                                 >
                                     {/* Volume bar */}
-                                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-slate-700 overflow-hidden">
+                                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--bg-main)] overflow-hidden">
                                         <div className="h-full bg-emerald-400 transition-all duration-75" style={{ width: `${Math.min(volume * 2, 100)}%` }} />
                                     </div>
                                     <Mic size={18} className={isRecording ? "animate-bounce" : ""} />
                                     <span className="hidden sm:block">{isRecording ? "Stop" : "Record"}</span>
                                 </button>
                             </div>
-                            <p className="text-center text-[10px] text-slate-700 font-bold mt-3 uppercase tracking-widest">
+                            <p className="text-center text-[10px] text-[var(--text-muted)] opacity-40 font-bold mt-3 uppercase tracking-widest">
                                 {isSpotlightMode ? "Type or click the mic to speak" : "Press Enter to send • Shift+Enter for new line"}
                             </p>
                         </div>
