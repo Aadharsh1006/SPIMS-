@@ -58,7 +58,7 @@ const ProjectAudit = ({ project, onAuditUpdate }) => {
         <button
             onClick={handleAudit}
             disabled={auditing}
-            className="mt-5 w-full py-4 bg-[var(--bg-main)]/50 hover:bg-[var(--bg-main)] text-[var(--text-muted)] hover:text-[var(--accent)] rounded-[1.25rem] border border-dashed border-[var(--border-main)] font-black text-[10px] uppercase tracking-[0.3em] transition-all flex items-center justify-center gap-3 active:scale-95"
+            className="mt-5 w-full py-4 bg-[var(--bg-secondary)] hover:bg-[var(--bg-main)] text-[var(--text-muted)] hover:text-[var(--accent)] rounded-[1.25rem] border border-dashed border-[var(--border-main)] font-black text-[10px] uppercase tracking-[0.3em] transition-all flex items-center justify-center gap-3 active:scale-95"
         >
             {auditing ? <Loader2 size={16} className="animate-spin text-[var(--accent)]" /> : <><CpuIcon size={16} /> Verify Project</>}
         </button>
@@ -257,10 +257,9 @@ const StudentProfilePage = () => {
 
     const { total: strength, breakdown } = calculateProfileStrength();
 
-    // Shared input style
-    const inputCls = "w-full px-5 py-4 bg-[var(--bg-main)]/50 border border-[var(--border-main)] rounded-2xl font-bold text-[var(--text-main)] outline-none focus:border-[var(--accent)] focus:bg-[var(--bg-main)] focus:ring-4 focus:ring-[var(--accent)]/10 transition-all shadow-[var(--shadow-sm)]";
-    const labelCls = "text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest block mb-2 ml-1 opacity-70";
-    const cardCls = "bg-[var(--bg-card)]/80 backdrop-blur-md p-8 rounded-[2rem] border border-[var(--border-main)] space-y-7 hover:border-[var(--accent)]/20 transition-all shadow-[var(--shadow-md)]";
+    const inputCls = "w-full px-5 py-4 bg-[var(--bg-secondary)] border border-[var(--border-main)] rounded-2xl font-bold text-[var(--text-main)] outline-none focus:border-[var(--accent)] focus:bg-[var(--bg-card)] focus:ring-4 focus:ring-[var(--accent)]/10 transition-all shadow-[var(--shadow-sm)]";
+    const labelCls = "text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest block mb-2 ml-1";
+    const cardCls = "bg-[var(--bg-card)] p-8 rounded-[2rem] border border-[var(--border-main)] space-y-7 hover:border-[var(--accent)]/30 transition-all shadow-[var(--shadow-md)]";
     const sectionTitleCls = "text-lg font-black text-[var(--text-bright)] tracking-tight flex items-center gap-3 uppercase italic leading-none";
     const addBtnCls = "flex items-center gap-2 px-5 py-2.5 bg-[var(--accent)]/10 text-[var(--accent)] rounded-xl font-black text-[9px] uppercase tracking-widest hover:bg-[var(--accent)] hover:text-white transition-all border border-[var(--accent)]/20 active:scale-95 shadow-[var(--shadow-sm)]";
 
@@ -410,7 +409,7 @@ const StudentProfilePage = () => {
                                 </div>
                             ))}
                             {(!user.profile?.skills || user.profile.skills.length === 0) && (
-                                <div className="w-full py-10 text-center rounded-[1.5rem] border-2 border-dashed border-[var(--border-main)] bg-[var(--bg-main)]/30">
+                                <div className="w-full py-10 text-center rounded-[1.5rem] border-2 border-dashed border-[var(--border-main)] bg-[var(--bg-secondary)]">
                                     <Terminal size={24} className="mx-auto mb-3 text-[var(--text-muted)] opacity-20" />
                                     <p className="text-[10px] font-black uppercase tracking-widest text-[var(--text-muted)] italic">No skills added yet</p>
                                 </div>
@@ -436,7 +435,7 @@ const StudentProfilePage = () => {
                             <textarea
                                 value={user.profile?.bio || ''}
                                 onChange={(e) => setUser({ ...user, profile: { ...user.profile, bio: e.target.value } })}
-                                className="w-full bg-[var(--bg-main)]/50 px-7 py-6 rounded-[1.5rem] border border-[var(--border-main)] outline-none focus:border-[var(--accent)] focus:bg-[var(--bg-main)] focus:ring-4 focus:ring-[var(--accent)]/10 font-bold text-[var(--text-main)] text-base h-64 resize-y transition-all leading-relaxed shadow-[var(--shadow-sm)] placeholder:text-[var(--text-muted)] placeholder:opacity-30"
+                                className="w-full bg-[var(--bg-secondary)] px-7 py-6 rounded-[1.5rem] border border-[var(--border-main)] outline-none focus:border-[var(--accent)] focus:bg-[var(--bg-card)] focus:ring-4 focus:ring-[var(--accent)]/10 font-bold text-[var(--text-main)] text-base h-64 resize-y transition-all leading-relaxed shadow-[var(--shadow-sm)] placeholder:text-[var(--text-muted)] placeholder:opacity-50"
                                 placeholder="Describe your professional journey and career goals..."
                             />
                             <div className="absolute bottom-5 right-6 text-[10px] font-black text-[var(--accent)] uppercase tracking-widest tabular-nums opacity-40">
@@ -459,7 +458,7 @@ const StudentProfilePage = () => {
                         </div>
                         <div className="space-y-6">
                             {user.profile?.education?.length > 0 ? user.profile.education.map((edu, idx) => (
-                                <div key={idx} className="p-7 rounded-[1.5rem] bg-[var(--bg-main)]/50 border border-[var(--border-main)] relative group/card hover:border-[var(--accent)]/30 transition-all shadow-[var(--shadow-sm)]">
+                                <div key={idx} className="p-7 rounded-[1.5rem] bg-[var(--bg-secondary)] border border-[var(--border-main)] relative group/card hover:border-[var(--accent)]/30 transition-all shadow-[var(--shadow-sm)]">
                                     <button onClick={() => removeEducation(idx)} className="absolute top-6 right-6 text-[var(--text-muted)] hover:text-red-500 opacity-0 group-hover/card:opacity-100 transition-all bg-[var(--bg-card)] p-2 rounded-xl border border-[var(--border-main)] shadow-[var(--shadow-md)]">
                                         <Trash2 size={16} />
                                     </button>
@@ -473,7 +472,7 @@ const StudentProfilePage = () => {
                                     </div>
                                 </div>
                             )) : (
-                                <div className="py-16 text-center rounded-[2rem] border-2 border-dashed border-[var(--border-main)] bg-[var(--bg-main)]/30">
+                                <div className="py-16 text-center rounded-[2rem] border-2 border-dashed border-[var(--border-main)] bg-[var(--bg-secondary)]">
                                     <GraduationCap size={40} className="mx-auto mb-4 text-[var(--text-muted)] opacity-20" />
                                     <p className="font-black text-[10px] uppercase tracking-widest text-[var(--text-muted)] italic">No education details added yet</p>
                                 </div>
@@ -495,7 +494,7 @@ const StudentProfilePage = () => {
                         </div>
                         <div className="space-y-6">
                             {user.profile?.projects?.length > 0 ? user.profile.projects.map((proj, idx) => (
-                                <div key={idx} className="p-7 rounded-[1.5rem] bg-[var(--bg-main)]/50 border border-[var(--border-main)] relative group/card hover:border-[var(--accent)]/30 transition-all shadow-[var(--shadow-sm)]">
+                                <div key={idx} className="p-7 rounded-[1.5rem] bg-[var(--bg-secondary)] border border-[var(--border-main)] relative group/card hover:border-[var(--accent)]/30 transition-all shadow-[var(--shadow-sm)]">
                                     <button onClick={() => removeProject(idx)} className="absolute top-6 right-6 text-[var(--text-muted)] hover:text-red-500 opacity-0 group-hover/card:opacity-100 transition-all bg-[var(--bg-card)] p-2 rounded-xl border border-[var(--border-main)] shadow-[var(--shadow-md)]">
                                         <Trash2 size={16} />
                                     </button>
@@ -509,7 +508,7 @@ const StudentProfilePage = () => {
                                     </div>
                                     <div>
                                         <label className={labelCls}>Description</label>
-                                        <textarea value={proj.description || ''} onChange={(e) => updateProject(idx, 'description', e.target.value)} className="w-full bg-[var(--bg-main)]/80 px-5 py-4 rounded-[1.25rem] border border-[var(--border-main)] outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent)]/10 transition-all font-bold text-[var(--text-muted)] text-sm h-28 resize-none leading-relaxed shadow-[var(--shadow-sm)]" placeholder="Describe what you built..." />
+                                        <textarea value={proj.description || ''} onChange={(e) => updateProject(idx, 'description', e.target.value)} className="w-full bg-[var(--bg-main)] px-5 py-4 rounded-[1.25rem] border border-[var(--border-main)] outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent)]/10 transition-all font-bold text-[var(--text-muted)] text-sm h-28 resize-none leading-relaxed shadow-[var(--shadow-sm)]" placeholder="Describe what you built..." />
                                     </div>
                                     <ProjectAudit
                                         project={proj}
@@ -521,7 +520,7 @@ const StudentProfilePage = () => {
                                     />
                                 </div>
                             )) : (
-                                <div className="py-16 text-center rounded-[2rem] border-2 border-dashed border-[var(--border-main)] bg-[var(--bg-main)]/30">
+                                <div className="py-16 text-center rounded-[2rem] border-2 border-dashed border-[var(--border-main)] bg-[var(--bg-secondary)]">
                                     <Code size={40} className="mx-auto mb-4 text-[var(--text-muted)] opacity-20" />
                                     <p className="font-black text-[10px] uppercase tracking-widest text-[var(--text-muted)] italic">No projects added yet</p>
                                 </div>
@@ -553,7 +552,7 @@ const StudentProfilePage = () => {
                                     </button>
                                 </div>
                             )) : (
-                                <div className="py-14 text-center rounded-[2rem] border-2 border-dashed border-[var(--border-main)] bg-[var(--bg-main)]/30">
+                                <div className="py-14 text-center rounded-[2rem] border-2 border-dashed border-[var(--border-main)] bg-[var(--bg-secondary)]">
                                     <Award size={36} className="mx-auto mb-3 text-[var(--text-muted)] opacity-20" />
                                     <p className="font-black text-[10px] uppercase tracking-widest text-[var(--text-muted)] italic">No certifications added yet</p>
                                 </div>
@@ -585,7 +584,7 @@ const StudentProfilePage = () => {
                                     </button>
                                 </div>
                             )) : (
-                                <div className="py-14 text-center rounded-[2rem] border-2 border-dashed border-[var(--border-main)] bg-[var(--bg-main)]/30">
+                                <div className="py-14 text-center rounded-[2rem] border-2 border-dashed border-[var(--border-main)] bg-[var(--bg-secondary)]">
                                     <Trophy size={36} className="mx-auto mb-3 text-[var(--text-muted)] opacity-20" />
                                     <p className="font-black text-[10px] uppercase tracking-widest text-[var(--text-muted)] italic">No awards added yet</p>
                                 </div>
@@ -660,7 +659,7 @@ const StudentProfilePage = () => {
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-3 bg-[var(--bg-main)]/50 p-4 rounded-xl border border-[var(--border-main)] relative z-10">
+                        <div className="flex items-center gap-3 bg-[var(--bg-secondary)] p-4 rounded-xl border border-[var(--border-main)] relative z-10">
                             <ShieldCheck size={16} className="text-[var(--accent)] shrink-0 opacity-50" />
                             <p className="text-[11px] font-bold text-[var(--text-muted)] opacity-50 italic">Architecture secured by end-to-end encryption. Your data remains private.</p>
                         </div>
@@ -697,7 +696,7 @@ const StudentProfilePage = () => {
                         <div className="flex-1 overflow-y-auto p-8 space-y-10 custom-scrollbar">
                             {/* Scores */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="bg-[var(--bg-main)]/50 rounded-[2rem] p-8 text-[var(--text-bright)] border border-[var(--border-main)] relative overflow-hidden shadow-[var(--shadow-sm)]">
+                                <div className="bg-[var(--bg-secondary)] rounded-[2rem] p-8 text-[var(--text-bright)] border border-[var(--border-main)] relative overflow-hidden shadow-[var(--shadow-sm)]">
                                     <div className="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-[var(--accent)]/10 rounded-full blur-2xl pointer-events-none" />
                                     <h4 className="text-[10px] font-black text-[var(--accent)] uppercase tracking-[0.3em] mb-5 flex items-center gap-2 italic"><TrendingUp size={13} /> Resume Score</h4>
                                     <div className="flex items-baseline gap-2">
@@ -740,7 +739,7 @@ const StudentProfilePage = () => {
                                 <h4 className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.3em] flex items-center gap-3 italic">
                                     <User size={13} className="text-[var(--accent)]" /> Profile Summary
                                 </h4>
-                                <div className="p-7 bg-[var(--bg-main)]/50 rounded-[1.5rem] border border-[var(--border-main)] text-[var(--text-main)] text-sm leading-relaxed font-bold italic shadow-[var(--shadow-sm)]">
+                                <div className="p-7 bg-[var(--bg-secondary)] rounded-[1.5rem] border border-[var(--border-main)] text-[var(--text-main)] text-sm leading-relaxed font-bold italic shadow-[var(--shadow-sm)]">
                                     {syncData.bio || syncData.summary || "No summary found in document."}
                                 </div>
                             </div>
@@ -774,7 +773,7 @@ const StudentProfilePage = () => {
                                     <h4 className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.3em] flex items-center gap-3 italic"><Terminal size={13} className="text-[var(--accent)]" /> Projects Found</h4>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                         {syncData.projects.map((p, i) => (
-                                            <div key={i} className="p-7 bg-[var(--bg-main)]/50 rounded-[1.5rem] border border-[var(--border-main)] hover:border-[var(--accent)]/30 transition-all shadow-[var(--shadow-sm)]">
+                                            <div key={i} className="p-7 bg-[var(--bg-secondary)] rounded-[1.5rem] border border-[var(--border-main)] hover:border-[var(--accent)]/30 transition-all shadow-[var(--shadow-sm)]">
                                                 <div className="flex items-center justify-between mb-3">
                                                     <span className="text-sm font-black text-[var(--text-bright)] italic tracking-tight">{p.title}</span>
                                                     <span className="text-[9px] font-black text-[var(--accent)] uppercase px-2.5 py-1 bg-[var(--bg-main)] rounded-full border border-[var(--border-main)] shadow-[var(--shadow-sm)]">#{i + 1}</span>
@@ -793,7 +792,7 @@ const StudentProfilePage = () => {
                         </div>
 
                         {/* Footer */}
-                        <div className="p-8 border-t border-[var(--border-main)] flex items-center justify-between bg-[var(--bg-card)]/80">
+                        <div className="p-8 border-t border-[var(--border-main)] flex items-center justify-between bg-[var(--bg-card)]">
                             <button onClick={() => setShowSyncReport(false)} className="px-7 py-3.5 text-[var(--text-muted)] hover:text-red-500 font-black text-[10px] uppercase tracking-[0.2em] transition-all hover:bg-red-500/10 rounded-xl">
                                 Discard
                             </button>
@@ -817,7 +816,7 @@ const StudentProfilePage = () => {
                                 <X size={20} />
                             </button>
                         </div>
-                        <div className="flex-1 overflow-y-auto bg-[var(--bg-main)]/80 rounded-xl border border-[var(--border-main)] p-4 custom-scrollbar">
+                        <div className="flex-1 overflow-y-auto bg-[var(--bg-secondary)] rounded-xl border border-[var(--border-main)] p-4 custom-scrollbar">
                             <pre className="text-xs font-mono text-[var(--text-main)] whitespace-pre-wrap leading-relaxed italic">{aiRawText}</pre>
                         </div>
                         <button onClick={() => setShowAtsView(false)} className="mt-5 px-6 py-4 bg-[var(--accent)] text-white font-black text-[10px] uppercase tracking-[0.3em] rounded-xl hover:bg-[var(--accent)]/90 transition-all active:scale-95 shadow-[var(--shadow-md)]">
@@ -830,7 +829,7 @@ const StudentProfilePage = () => {
             {/* Sticky Save Bar */}
             {!isHeaderVisible && (
                 <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[200] w-full max-w-xl px-4 animate-in slide-in-from-bottom-8 duration-500">
-                    <div className="bg-[var(--bg-card)]/90 backdrop-blur-2xl p-4 rounded-[2rem] border border-[var(--border-main)] shadow-[var(--shadow-lg)] flex items-center justify-between gap-5">
+                    <div className="bg-[var(--bg-card)] backdrop-blur-2xl p-4 rounded-[2rem] border border-[var(--border-main)] shadow-[var(--shadow-lg)] flex items-center justify-between gap-5">
                         <div className="flex items-center gap-4 ml-1">
                             <div className="w-11 h-11 rounded-xl bg-[var(--accent)] flex items-center justify-center text-white font-black text-lg shadow-[var(--shadow-sm)] italic">
                                 {user.name?.charAt(0)}

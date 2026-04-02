@@ -4,31 +4,31 @@
 @tailwind utilities;
 
 :root {
-  --bg-main: #020617; /* Slate-950 */
-  --bg-card: #0f172a; /* Slate-900 */
-  --bg-secondary: #1e293b; /* Slate-800 */
-  --border-main: #1e293b; /* Slate-800 */
-  --text-main: #f8fafc; /* Slate-50 */
-  --text-muted: #94a3b8; /* Slate-400 */
+  --bg-main: #020617;    /* Slate-950 — deepest background */
+  --bg-card: #0f172a;    /* Slate-900 — card surface */
+  --bg-secondary: #1e293b; /* Slate-800 — elevated / secondary surface */
+  --border-main: #334155;  /* Slate-700 — visible border against card/secondary */
+  --text-main: #f1f5f9;    /* Slate-100 — body text */
+  --text-muted: #94a3b8;   /* Slate-400 — secondary text */
   --text-bright: #ffffff;
-  --accent: #8b5cf6; /* Violet-500 */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --accent: #8b5cf6;       /* Violet-500 */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.25), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.35), 0 4px 6px -4px rgb(0 0 0 / 0.2);
 }
 
 html.light {
-  --bg-main: #f1f5f9; /* Slate-100 */
-  --bg-card: #ffffff;
-  --bg-secondary: #f8fafc;
-  --border-main: #e2e8f0; /* Slate-200 */
-  --text-main: #1e293b; /* Slate-800 */
-  --text-muted: #64748b; /* Slate-500 */
-  --text-bright: #0f172a;
-  --accent: #6366f1; /* Indigo-500 */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
-  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --bg-main: #e8edf5;    /* A cooler slate-200 — avoids blinding white background */
+  --bg-card: #f8fafc;    /* Near-white card surface with subtle depth */
+  --bg-secondary: #edf0f7; /* Slightly darker than card for section contrast */
+  --border-main: #cbd5e1;  /* Slate-300 — clear, soft border */
+  --text-main: #1e293b;    /* Slate-800 — dark readable body text */
+  --text-muted: #475569;   /* Slate-600 — slightly darker for better contrast */
+  --text-bright: #0f172a;  /* Slate-900 — headings */
+  --accent: #6366f1;       /* Indigo-500 */
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.08);
+  --shadow-md: 0 4px 12px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.12), 0 8px 10px -6px rgb(0 0 0 / 0.08);
 }
 
 @layer base {
@@ -39,6 +39,8 @@ html.light {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg-main);
+    color: var(--text-main);
   }
 
   /* Let root take full width — critical for layouts */
@@ -53,6 +55,18 @@ html.light {
   /* Smooth scrolling globally */
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Native form elements must inherit theme colors — critical for selects/inputs in light mode */
+  input, select, textarea {
+    color: var(--text-main);
+    background-color: transparent;
+  }
+
+  /* Fix select dropdown arrow and option colors in light mode */
+  select option {
+    background-color: var(--bg-card);
+    color: var(--text-main);
   }
 }
 
